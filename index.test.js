@@ -1,13 +1,15 @@
 //Tdd
 const soma = require('./')
 
-const expect = (result, expected) => {
-    if (result == expected) {
-        console.log('\x1b[32m', 'Teste passoou!')
-    } else {
-        console.log('\x1b[31m', 'Teste falhoou!')
+const expect = (result) => ({
+    toBe: (expected) => {
+        if (result == expected) {
+            console.log('\x1b[32m', 'Teste passoou!')
+        } else {
+            console.log('\x1b[31m', 'Teste falhoou!')
+        }
     }
-}
+})
 
 const it = (description, cb) => {
     console.log('--', description)
@@ -20,5 +22,5 @@ it('Eu espero que a função soma, ao receber dois valores, retorne a soma dos v
     const result = soma(num1, num2)
     const expected = 60
 
-    expect(result, expected)
+    expect(result).toBe(expected)
 })
